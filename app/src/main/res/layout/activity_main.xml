@@ -12,10 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Insert Data"
-        app:layout_constraintEnd_toStartOf="@+id/btnSelect"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,25 +20,47 @@
         android:id="@+id/btnSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Select Data"
+        app:layout_constraintStart_toEndOf="@+id/btnInsert"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnErase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="8dp"
+        android:text="Erase All"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnInsert"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="389dp"
+        android:layout_height="449dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSelect"
+        app:layout_constraintVertical_bias="0.929" />
+
+    <EditText
+        android:id="@+id/edtNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSelect" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

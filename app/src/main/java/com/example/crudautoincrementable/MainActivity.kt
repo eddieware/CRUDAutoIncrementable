@@ -7,10 +7,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
+import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mDb:RoomSingleton
+    private lateinit var mDb: RoomSingleton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +24,12 @@ class MainActivity : AppCompatActivity() {
         textView.movementMethod = ScrollingMovementMethod()
 
         // Insert button click listener
-        btnInsert.setOnClickListener{
+        btnInsert.setOnClickListener {
             // Initialize a new student
-            val student = Student(id = null,
-                    fullName = "Eduardo",
-                    result ="Mejia"
+            val student = Student(
+                id = null,
+                fullName = "Eduardo",
+                result = "Mejia"
             )
 
             doAsync {
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // Select button click listener
-        btnSelect.setOnClickListener{
+        btnSelect.setOnClickListener {
             doAsync {
                 // Get the student list from database
                 val list = mDb.studentDao().allStudents()
@@ -51,11 +53,44 @@ class MainActivity : AppCompatActivity() {
                     toast("${list.size} records found.")
                     // Display the students in text view
                     textView.text = ""
-                    for (student in list){
+                    for (student in list) {
                         textView.append("${student.id} : ${student.fullName} : ${student.result}\n")
                     }
                 }
             }
         }
+
+        btnErase.setOnClickListener {
+            
+           
+
+            doAsync {
+
+
+                //para hacer el delete
+
+                var idNumber= edtNumber.text.toString()
+                var longNumber= idNumber.toLong()
+                println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+longNumber)
+
+                var list = mDb.studentDao().allStudents()
+
+                var list3 =list.size.toLong()
+                
+                mDb.studentDao().delete(student = Student(longNumber,"",""))
+
+                uiThread {
+
+
+                    toast("${longNumber} Id Destroyed")
+                }
+
+
+                }
+
+        }
+
+
+
     }
 }
